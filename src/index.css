@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  /* Blueprint / cluster-status palette — grounded in DevOps signal colors */
+  --color-void: #0b0e14;
+  --color-surface: #10141d;
+  --color-surface-2: #171d29;
+  --color-line: #262e40;
+  --color-line-bright: #37415a;
+
+  --color-mint: #00e5a0;       /* healthy / running */
+  --color-mint-dim: #0a3d31;
+  --color-blueprint: #4c8dff;  /* architecture / links */
+  --color-amber: #ffb454;      /* pending / building */
+  --color-coral: #ff6b6b;      /* error / alert, used sparingly */
+
+  --color-ink: #e6eaf0;
+  --color-muted: #8a94a6;
+  --color-faint: #4d5568;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-mint);
+  color: var(--color-void);
+}
+
+/* utility: terminal-style prompt label */
+.prompt-label::before {
+  content: "$ ";
+  color: var(--color-mint);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb { background: var(--color-line-bright); border-radius: 6px; }
